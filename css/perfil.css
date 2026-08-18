@@ -1,0 +1,344 @@
+/* =========================
+   PANTALLA
+========================= */
+
+#pantallaPerfil {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================
+   FONDO DEL MAPA
+========================= */
+
+.fondoMapa {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.75)
+        ),
+        url("../img/mapa/mapa.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    animation: movimientoMapa 20s ease-in-out infinite alternate;
+
+    transform: scale(1.05);
+
+}
+
+
+/* Movimiento del fondo */
+
+@keyframes movimientoMapa {
+
+    0% {
+
+        transform: scale(1.05);
+
+        background-position: center;
+
+    }
+
+    100% {
+
+        transform: scale(1.15);
+
+        background-position: 55% center;
+
+    }
+
+}
+
+
+/* =========================
+   VENTANA
+========================= */
+
+.ventanaPerfil {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 950px;
+
+    min-height: 650px;
+
+    padding: 45px 55px;
+
+    text-align: center;
+
+    background: rgba(7, 17, 30, 0.94);
+
+    border: 2px solid #c8aa6e;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 40px rgba(0, 0, 0, 0.8),
+        inset 0 0 30px rgba(200, 170, 110, 0.05);
+
+}
+
+
+/* =========================
+   TITULO
+========================= */
+
+.ventanaPerfil h1 {
+
+    font-size: 52px;
+
+    letter-spacing: 3px;
+
+    color: #c8aa6e;
+
+    margin-bottom: 8px;
+
+}
+
+
+.ventanaPerfil h2 {
+
+    font-size: 28px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.descripcion {
+
+    color: #bfc4ca;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* =========================
+   NOMBRE
+========================= */
+
+.campoNombre {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 30px;
+
+}
+
+
+.campoNombre label {
+
+    font-size: 17px;
+
+    color: #c8aa6e;
+
+    font-weight: bold;
+
+}
+
+
+.campoNombre input {
+
+    width: 380px;
+
+    padding: 13px 18px;
+
+    border-radius: 6px;
+
+    border: 1px solid #555;
+
+    outline: none;
+
+    background: #111b28;
+
+    color: white;
+
+    font-size: 16px;
+
+    text-align: center;
+
+}
+
+
+.campoNombre input:focus {
+
+    border-color: #c8aa6e;
+
+    box-shadow: 0 0 10px rgba(200, 170, 110, 0.3);
+
+}
+
+
+/* =========================
+   AVATARES
+========================= */
+
+.ventanaPerfil h3 {
+
+    margin-bottom: 18px;
+
+    color: #c8aa6e;
+
+}
+
+
+#avatares {
+
+    display: grid;
+
+    grid-template-columns: repeat(8, 1fr);
+
+    gap: 14px;
+
+    width: 100%;
+
+}
+
+
+/* Cada avatar */
+
+.avatar {
+
+    height: 110px;
+
+    border: 2px solid #273343;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    background: #101a27;
+
+}
+
+
+.avatar img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+/* Hover */
+
+.avatar:hover {
+
+    transform: translateY(-5px);
+
+    border-color: #c8aa6e;
+
+}
+
+
+/* Avatar seleccionado */
+
+.avatar.seleccionado {
+
+    border-color: #00bfff;
+
+    box-shadow:
+        0 0 15px rgba(0, 191, 255, 0.8);
+
+    transform: translateY(-5px);
+
+}
+
+
+/* =========================
+   MENSAJE
+========================= */
+
+#mensajePerfil {
+
+    height: 25px;
+
+    margin: 20px 0 10px;
+
+    color: #c8aa6e;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================
+   BOTÓN
+========================= */
+
+#crearPerfil {
+
+    padding: 14px 45px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #c8aa6e;
+
+    color: #111;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+
+}
+
+
+#crearPerfil:hover {
+
+    background: #e5c77e;
+
+    transform: scale(1.05);
+
+}
+
+
+/* =========================
+   FUTURAS PANTALLAS
+========================= */
+
+#pantallaCartas,
+#pantallaBatalla {
+
+    display: none;
+
+}
