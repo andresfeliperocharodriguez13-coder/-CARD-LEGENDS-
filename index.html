@@ -2,60 +2,105 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>League of Legends Card</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/perfil.css">
-    <link rel="stylesheet" href="css/cartas.css"> <!-- <-- Asegúrate de incluir esta línea -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Cartas - La Grieta</title>
+    <style>
+        body {
+            background-color: #050b14;
+            color: #f0e6d2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .pantalla {
+            display: none; /* Por defecto ocultas para controlarlas por JS */
+        }
+        .activa {
+            display: block; /* Pantalla visible actual */
+        }
+        /* Estilos rápidos para el perfil */
+        .caja-perfil {
+            max-width: 400px;
+            margin: 80px auto;
+            background: #1e2c40;
+            padding: 30px;
+            border-radius: 8px;
+            border: 2px solid #c8aa6e;
+        }
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #3a4a60;
+        }
+        button {
+            background: #c8aa6e;
+            color: #050b14;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #e2c286;
+        }
+    </style>
 </head>
 <body>
-    <!-- PANTALLA 1: PERFIL -->
-    <main id="pantallaPerfil">
-        <div class="fondoMapa"></div>
-        <section class="ventanaPerfil">
-            <h1>CARD LEGENDS</h1>
-            <h2>CREA TU PERFIL</h2>
-            <div class="campoNombre">
-                <label for="nombreJugador">Nombre de Invocador</label>
-                <input type="text" id="nombreJugador" placeholder="Escribe tu nombre..." maxlength="15">
-            </div>
-            <h3>Elige tu avatar</h3>
-            <div id="avatares">
-                <!-- Tus avatares existentes -->
-            </div>
-            <div id="mensajePerfil"></div>
-            <button id="crearPerfil">Comenzar</button>
-        </section>
-    </main>
 
-    <!-- PANTALLA 2: SELECCIÓN DE CARTAS Y MAZO (ESTO FALTABA) -->
-    <section id="pantallaCartas">
-        <div class="fondoMapa"></div>
-        <div class="contenedor-cartas-general">
-            <h2>COLECCIÓN DE CAMPEONES</h2>
-            <p class="instruccion-cartas">Elige 5 cartas para armar tu mazo de batalla</p>
-            
-            <!-- Grilla donde se cargarán las 20 cartas -->
-            <div id="gridCartas" class="grid-cartas"></div>
-
-            <!-- Sección inferior del Mazo -->
-            <div class="seccion-mazo">
-                <h3>TU MAZO DE BATALLA (0/5)</h3>
-                <div id="slotMazoContainer" class="slot-mazo-container"></div>
-                <button id="btnConfirmarMazo" type="button">Confirmar Mazo y Comenzar Batalla</button>
-            </div>
+    <!-- PANTALLA 1: CREACIÓN DE PERFIL (Aparece primero) -->
+    <div id="pantallaPerfil" class="pantalla activa">
+        <div class="caja-perfil">
+            <h2>Crea tu Invocador</h2>
+            <p style="color: #a09b8c;">Introduce tu nombre para entrar a La Grieta</p>
+            <input type="text" id="inputNombreInvocador" placeholder="Nombre de Invocador..." autocomplete="off">
+            <br>
+            <button onclick="guardarPerfilYContinuar()">Comiciar Aventura</button>
         </div>
-    </section>
+    </div>
 
-    <!-- PANTALLA 3: BATALLA (Próxima fase) -->
-    <section id="pantallaBatalla" style="display: none;">
-        <!-- Aquí irá la batalla -->
-    </section>
+    <!-- PANTALLA 2: SELECCIÓN DE CARTAS (Oculta al inicio) -->
+    <div id="pantallaCartas" class="pantalla">
+        <h1 id="saludoInvocador">SELECCIÓN DE MAZO</h1>
+        <div class="seccion-mazo">
+            <h3 style="color: #c8aa6e;">TU MAZO DE BATALLA (0/5) - ¡Elige 5 para iniciar!</h3>
+            <div id="slotMazoContainer" style="display: flex; gap: 10px; justify-content: center; margin-bottom: 25px;"></div>
+        </div>
+
+        <h2>Cartas Disponibles</h2>
+        <div id="gridCartas" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; max-width: 900px; margin: 0 auto;"></div>
+    </div>
+
+    <!-- PANTALLA 3: ZONA DE BATALLA (Oculta al inicio) -->
+    <div id="pantallaBatalla" class="pantalla">
+        <!-- Se inyecta automáticamente con JS -->
+    </div>
 
     <!-- Scripts -->
-    <script src="js/datos.js"></script>
-    <script src="js/perfil.js"></script>
     <script src="js/cartas.js"></script>
+    <script src="js/batalla.js"></script>
+    <script>
+        // Función rápida para manejar la transición del perfil a la selección de cartas
+        function guardarPerfilYContinuar() {
+            const nombre = document.getElementById("inputNombreInvocador").value.trim();
+            if (!nombre) {
+                alert("Por favor ingresa un nombre de invocador válido.");
+                return;
+            }
+            
+            // Guardar en localStorage para recordarlo
+            localStorage.setItem("nombreInvocador", nombre);
 
-    
+            // Cambiar de pantalla de Perfil a Cartas
+            document.getElementById("pantallaPerfil").classList.remove("activa");
+            document.getElementById("pantallaCartas").classList.add("activa");
+
+            // Opcional: Personalizar saludo si quieres
+            const titulo = document.getElementById("saludoInvocador");
+            if(titulo) titulo.textContent = `SELECCIÓN DE MAZO - Invocador: ${nombre}`;
+        }
+
+        // Si ya había un perfil guardado antes, podemos saltarlo opcionalmente o dejarlo de inicio
+    </script>
 </body>
 </html>
