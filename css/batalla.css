@@ -1,0 +1,57 @@
+#pantallaBatalla {
+    min-height: 100vh;
+    padding: 20px;
+    background: #010a13;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.area-combate {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 50px;
+}
+
+.columna-jugador, .columna-cpu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.carta-combate {
+    width: 150px;
+    background: #0f1c2e;
+    border: 2px solid #c8aa6e;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.barra-vida {
+    height: 10px;
+    background: #555;
+    margin: 5px 0;
+}
+
+.vida-actual {
+    height: 100%;
+    background: #00ff00;
+    width: 100%;
+}
+
+.botones-accion {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-hab {
+    padding: 10px;
+    background: #1e2c40;
+    border: 1px solid #c8aa6e;
+    color: white;
+    cursor: pointer;
+}
