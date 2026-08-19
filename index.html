@@ -2,161 +2,58 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>|League of Legends Card</title>
+    <title>League of Legends Card</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/perfil.css">
-
+    <link rel="stylesheet" href="css/cartas.css"> <!-- <-- Asegúrate de incluir esta línea -->
 </head>
-
 <body>
-
-
+    <!-- PANTALLA 1: PERFIL -->
     <main id="pantallaPerfil">
-
         <div class="fondoMapa"></div>
-
         <section class="ventanaPerfil">
-
             <h1>CARD LEGENDS</h1>
-
             <h2>CREA TU PERFIL</h2>
-
-            <p class="descripcion">
-                Elige tu nombre y tu campeón favorito
-            </p>
-
-
             <div class="campoNombre">
-
-                <label for="nombreJugador">
-                    Nombre del jugador
-                </label>
-
-                <input
-                    type="text"
-                    id="nombreJugador"
-                    placeholder="Escribe tu nombre..."
-                    maxlength="15"
-                >
-
+                <label for="nombreJugador">Nombre de Invocador</label>
+                <input type="text" id="nombreJugador" placeholder="Escribe tu nombre..." maxlength="15">
             </div>
-
-
-            <h3>ELIGE TU AVATAR</h3>
-
+            <h3>Elige tu avatar</h3>
             <div id="avatares">
-
-                <div class="avatar" data-avatar="avatar1">
-
-                    <img
-                        src="img/avatares/avatar1.jpg"
-                        alt="Avatar 1"
-                    >
-
-                </div>
-
-
-                <div class="avatar" data-avatar="avatar2">
-
-                    <img
-                        src="img/avatares/avatar2.jpg"
-                        alt="Avatar 2"
-                    >
-
-                </div>
-
-
-                <div class="avatar" data-avatar="avatar3">
-
-                    <img
-                        src="img/avatares/avatar3.jpg"
-                        alt="Avatar 3"
-                    >
-
-                </div>
-
-
-                <div class="avatar" data-avatar="avatar4">
-
-                    <img
-                        src="img/avatares/avatar4.jpg"
-                        alt="Avatar 4"
-                    >
-
-                </div>
-
-
-                <div class="avatar" data-avatar="avatar5">
-
-                    <img
-                        src="img/avatares/avatar5.jpg"
-                        alt="Avatar 5"
-                    >
-
-                </div>
-
-
-                <div class="avatar" data-avatar="avatar6">
-
-                    <img
-                        src="img/avatares/avatar6.jpg"
-                        alt="Avatar 6"
-                    >
-
-                </div>
-
-
-                <div class="avatar" data-avatar="avatar7">
-
-                    <img
-                        src="img/avatares/avatar7.jpg"
-                        alt="Avatar 7"
-                    >
-
-                </div>
-
-
-                <div class="avatar" data-avatar="avatar8">
-
-                    <img
-                        src="img/avatares/avatar8.jpg"
-                        alt="Avatar 8"
-                    >
-
-                </div>
-
+                <!-- Tus avatares existentes -->
             </div>
-
-
-            <p id="mensajePerfil"></p>
-
-
-            <button id="crearPerfil">
-
-                CREAR PERFIL
-
-            </button>
-
+            <div id="mensajePerfil"></div>
+            <button id="crearPerfil">Comenzar</button>
         </section>
-
     </main>
 
+    <!-- PANTALLA 2: SELECCIÓN DE CARTAS Y MAZO (ESTO FALTABA) -->
     <section id="pantallaCartas">
+        <div class="fondoMapa"></div>
+        <div class="contenedor-cartas-general">
+            <h2>COLECCIÓN DE CAMPEONES</h2>
+            <p class="instruccion-cartas">Elige 5 cartas para armar tu mazo de batalla</p>
+            
+            <!-- Grilla donde se cargarán las 20 cartas -->
+            <div id="gridCartas" class="grid-cartas"></div>
 
-        <h1>COLECCIÓN DE CAMPEONES</h1>
-
+            <!-- Sección inferior del Mazo -->
+            <div class="seccion-mazo">
+                <h3>TU MAZO DE BATALLA (0/5)</h3>
+                <div id="slotMazoContainer" class="slot-mazo-container"></div>
+                <button id="btnConfirmarMazo" disabled>Confirmar Mazo y Comenzar Batalla</button>
+            </div>
+        </div>
     </section>
 
-    <section id="pantallaBatalla">
-        <h1>BATALLA</h1>
-
+    <!-- PANTALLA 3: BATALLA (Próxima fase) -->
+    <section id="pantallaBatalla" style="display: none;">
+        <!-- Aquí irá la batalla -->
     </section>
+
+    <!-- Scripts -->
     <script src="js/datos.js"></script>
     <script src="js/perfil.js"></script>
     <script src="js/cartas.js"></script>
-    <script src="js/batalla.js"></script>
-    <script src="js/main.js"></script>
-
 </body>
 </html>

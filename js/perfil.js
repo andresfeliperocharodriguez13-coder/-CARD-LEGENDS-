@@ -114,3 +114,12 @@ botonCrear.addEventListener("click", function() {
     /* Por ahora solamente mostramos el mensaje */
 
 });
+
+// Al validar y guardar el perfil exitosamente:
+document.getElementById("crearPerfil").addEventListener("click", function() {
+    // ... tus validaciones previas de nombre y avatar ...
+    
+    // Ocultar perfil y mostrar cartas
+    document.getElementById("pantallaPerfil").style.display = "none";
+    document.getElementById("pantallaCartas").style.display = "block";
+});
